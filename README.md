@@ -25,10 +25,30 @@ A comprehensive Customer Relationship Management (CRM) backend system built with
 - **Security**: Helmet, bcryptjs
 - **Others**: CORS, Morgan (logging)
 
+📋 Complete API Endpoints Summary
+
+Authentication (No Auth Required)
+POST   /api/auth/register    ✅ Register new employee
+POST   /api/auth/login       ✅ Login employee (returns JWT)
+GET    /api/auth/profile     ✅ Get logged-in employee profile (Auth required)
+
+Public Enquiry (No Auth Required)
+POST   /api/enquiry          ✅ Submit enquiry form (PUBLIC)
+
+Lead Management (Auth Required)
+GET    /api/leads/unclaimed      ✅ Get all unclaimed/public leads
+POST   /api/leads/:id/claim      ✅ Claim a lead (becomes private)
+GET    /api/leads/my-leads       ✅ Get leads claimed by logged-in user
+GET    /api/leads/stats          ✅ BONUS: Get statistics
+
+Utility
+GET    /health                ✅ Health check
+GET    /                      ✅ Welcome/API info
+
 📁 Project Structure
 
 crm-backend/
-├── src/
+├── src/ br
 │   ├── config/
 │   │   ├── database.js              # MongoDB connection
 │   │   ├── env.js                   # Environment variables
@@ -119,8 +139,8 @@ CORS_ORIGIN=*
 Development mode:
 ```bash
 npm run dev
-Production mode:
 
+Production mode:
 ```bash
 npm start
 
