@@ -3,7 +3,7 @@ const ApiResponse = require('../utils/response.util');
 const { HTTP_STATUS } = require('../config/constants');
 
 class AuthController {
-  // Register new employee
+  
   static async register(req, res, next) {
     try {
       const { name, email, password } = req.body;
@@ -24,7 +24,6 @@ class AuthController {
     }
   }
 
-  // Login employee
   static async login(req, res, next) {
     try {
       const { email, password } = req.body;
@@ -45,7 +44,6 @@ class AuthController {
     }
   }
 
-  // Get current employee profile
   static async getProfile(req, res, next) {
     try {
       return ApiResponse.success(

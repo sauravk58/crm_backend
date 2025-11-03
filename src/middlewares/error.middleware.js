@@ -6,10 +6,8 @@ const errorHandler = (err, req, res, next) => {
   let statusCode = err.statusCode || HTTP_STATUS.INTERNAL_SERVER_ERROR;
   let message = err.message || 'Internal Server Error';
 
-  // Log error
   logger.error(`Error: ${message}`, err);
 
-  // Mongoose validation error
   if (err.name === 'ValidationError') {
     statusCode = HTTP_STATUS.BAD_REQUEST;
     const errors = Object.values(err.errors).map(e => ({
@@ -19,20 +17,17 @@ const errorHandler = (err, req, res, next) => {
     return ApiResponse.error(res, statusCode, 'Validation failed', errors);
   }
 
-  // Mongoose duplicate key error
   if (err.code === 11000) {
     statusCode = HTTP_STATUS.CONFLICT;
     const field = Object.keys(err.keyPattern)[0];
     message = `${field} already exists`;
   }
 
-  // Mongoose cast error (invalid ObjectId)
   if (err.name === 'CastError') {
     statusCode = HTTP_STATUS.BAD_REQUEST;
     message = `Invalid ${err.path}: ${err.value}`;
   }
 
-  // JWT errors are handled in jwt.service.js, but as fallback:
   if (err.name === 'JsonWebTokenError') {
     statusCode = HTTP_STATUS.UNAUTHORIZED;
     message = 'Invalid token';
@@ -46,7 +41,6 @@ const errorHandler = (err, req, res, next) => {
   return ApiResponse.error(res, statusCode, message);
 };
 
-// Handle 404 routes
 const notFound = (req, res, next) => {
   const message = `Route ${req.originalUrl} not found`;
   logger.warn(message);

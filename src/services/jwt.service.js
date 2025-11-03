@@ -3,14 +3,13 @@ const { jwtSecret, jwtExpire } = require('../config/env');
 const AppError = require('../utils/error.util');
 
 class JWTService {
-  // Generate JWT token
+  
   static generateToken(payload) {
     return jwt.sign(payload, jwtSecret, {
       expiresIn: jwtExpire
     });
   }
-
-  // Verify JWT token
+  
   static verifyToken(token) {
     try {
       return jwt.verify(token, jwtSecret);
@@ -25,7 +24,6 @@ class JWTService {
     }
   }
 
-  // Decode token without verification (for debugging)
   static decodeToken(token) {
     return jwt.decode(token);
   }

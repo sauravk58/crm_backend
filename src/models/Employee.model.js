@@ -37,7 +37,6 @@ const employeeSchema = new mongoose.Schema(
   }
 );
 
-// Hash password before saving
 employeeSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     return next();
@@ -48,12 +47,10 @@ employeeSchema.pre('save', async function (next) {
   next();
 });
 
-// Compare password method
 employeeSchema.methods.comparePassword = async function (candidatePassword) {
   return await bcrypt.compare(candidatePassword, this.password);
 };
 
-// Remove password from JSON output
 employeeSchema.methods.toJSON = function () {
   const obj = this.toObject();
   delete obj.password;

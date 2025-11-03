@@ -5,7 +5,7 @@ const { HTTP_STATUS } = require('../config/constants');
 
 const authenticate = async (req, res, next) => {
   try {
-    // Get token from header
+
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -14,13 +14,10 @@ const authenticate = async (req, res, next) => {
 
     const token = authHeader.split(' ')[1];
 
-    // Verify token
     const decoded = JWTService.verifyToken(token);
 
-    // Verify employee exists
     const employee = await AuthService.verifyEmployee(decoded.id);
 
-    // Attach employee to request object
     req.employee = employee;
     req.employeeId = employee._id;
 

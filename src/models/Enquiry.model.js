@@ -55,7 +55,7 @@ const enquirySchema = new mongoose.Schema(
   }
 );
 
-// Index for better query performance
+
 enquirySchema.index({ status: 1, createdAt: -1 });
 enquirySchema.index({ claimedBy: 1, status: 1 });
 

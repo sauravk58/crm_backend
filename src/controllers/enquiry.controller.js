@@ -3,7 +3,7 @@ const ApiResponse = require('../utils/response.util');
 const { HTTP_STATUS } = require('../config/constants');
 
 class EnquiryController {
-  // Submit enquiry form (Public - No authentication required)
+  
   static async submitEnquiry(req, res, next) {
     try {
       const { name, email, phone, courseInterest, message } = req.body;

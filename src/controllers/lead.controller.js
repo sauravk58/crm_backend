@@ -3,7 +3,7 @@ const ApiResponse = require('../utils/response.util');
 const { HTTP_STATUS } = require('../config/constants');
 
 class LeadController {
-  // Get all unclaimed leads
+  
   static async getUnclaimedLeads(req, res, next) {
     try {
       const page = parseInt(req.query.page) || 1;
@@ -22,7 +22,6 @@ class LeadController {
     }
   }
 
-  // Get leads claimed by logged-in employee
   static async getMyLeads(req, res, next) {
     try {
       const page = parseInt(req.query.page) || 1;
@@ -41,7 +40,6 @@ class LeadController {
     }
   }
 
-  // Claim a specific lead
   static async claimLead(req, res, next) {
     try {
       const { id } = req.params;
@@ -59,7 +57,6 @@ class LeadController {
     }
   }
 
-  // Get lead statistics
   static async getLeadStats(req, res, next) {
     try {
       const stats = await LeadService.getLeadStats(req.employeeId);
