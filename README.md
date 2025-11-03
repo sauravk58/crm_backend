@@ -48,7 +48,7 @@ GET    /                      ✅ Welcome/API info
 📁 Project Structure
 
 crm-backend/
-├── src/ br
+├── src/ /br
 │   ├── config/
 │   │   ├── database.js              # MongoDB connection
 │   │   ├── env.js                   # Environment variables
