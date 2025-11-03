@@ -26,7 +26,7 @@ A comprehensive Customer Relationship Management (CRM) backend system built with
 - **Others**: CORS, Morgan (logging)
 
 📋 Complete API Endpoints Summary
-
+```
 Authentication (No Auth Required)
 POST   /api/auth/register    ✅ Register new employee
 POST   /api/auth/login       ✅ Login employee (returns JWT)
@@ -44,11 +44,11 @@ GET    /api/leads/stats          ✅ BONUS: Get statistics
 Utility
 GET    /health                ✅ Health check
 GET    /                      ✅ Welcome/API info
-
+```
 📁 Project Structure
-
+```
 crm-backend/
-├── src/ /br
+├── src/ 
 │   ├── config/
 │   │   ├── database.js              # MongoDB connection
 │   │   ├── env.js                   # Environment variables
@@ -96,7 +96,7 @@ crm-backend/
 ├── .gitignore                       # Git ignore rules
 ├── package.json                     # Dependencies
 └── README.md                        # This file
-
+```
 ## Installation
 
 ### Prerequisites
@@ -111,13 +111,14 @@ crm-backend/
 ```bash
 git clone <repository-url>
 cd crm-backend
-
+```
 2. **Install dependencies**
 ```bash
 npm install
+```
 
-
-3. **Setup environment variables** 
+3. **Setup environment variables**
+```
 Create a .env file in the root directory:
 
 env
@@ -129,20 +130,19 @@ NODE_ENV=development
 MONGODB_URI=mongodb://localhost:27017/crm_system
 
 # JWT Configuration
-JWT_SECRET=your_super_secret_jwt_key_change_this_in_production
+JWT_SECRET=your_super_secret_jwt_key_change_this_in_production 
 JWT_EXPIRE=7d
 
 # CORS Configuration
 CORS_ORIGIN=*
-
-4. **Run the application** 
+```
+4. **Run the application**
+```
 Development mode:
-```bash
 npm run dev
 
 Production mode:
-```bash
 npm start
-
+```
 The server will start on http://localhost:5000
 
